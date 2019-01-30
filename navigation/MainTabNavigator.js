@@ -5,6 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import VictoryScreen from '../screens/Victory';
 import D3Screen from '../screens/D3Svg';
+import RNChartKitScreen from '../screens/RNChartKit'
 
 const VictoryStack = createStackNavigator({
   Victory: VictoryScreen,
@@ -38,8 +39,23 @@ D3Stack.navigationOptions = {
   ),
 };
 
+const RNChartKitStack = createStackNavigator({
+  RNChartKit: RNChartKitScreen,
+})
+
+RNChartKitStack.navigationOptions = {
+  tabBarLabel: "RN Chart Kit",
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-cog' : 'md-cog'}
+    />
+  )
+}
+
 
 export default createBottomTabNavigator({
   VictoryStack,
   D3Stack,
+  RNChartKitStack,
 });
